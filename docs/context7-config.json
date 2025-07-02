@@ -1,0 +1,124 @@
+{
+  "project": "AdCraft",
+  "description": "A comprehensive platform for creating, managing, and optimizing digital advertisements across multiple formats and channels",
+  "libraries": [
+    {
+      "name": "React",
+      "version": "18.x",
+      "context": "Frontend UI framework used for building the AdCraft user interface"
+    },
+    {
+      "name": "TypeScript",
+      "version": "4.x",
+      "context": "Static typing for JavaScript, used throughout the frontend and backend"
+    },
+    {
+      "name": "Material-UI",
+      "version": "5.x",
+      "context": "React component library for consistent UI design"
+    },
+    {
+      "name": "NestJS",
+      "version": "9.x",
+      "context": "Backend framework for building microservices"
+    },
+    {
+      "name": "Redux Toolkit",
+      "version": "1.x",
+      "context": "State management for React frontend"
+    },
+    {
+      "name": "Fabric.js",
+      "version": "5.x",
+      "context": "Canvas manipulation library for the ad editor"
+    },
+    {
+      "name": "MongoDB",
+      "version": "5.x",
+      "context": "NoSQL database for document storage"
+    },
+    {
+      "name": "PostgreSQL",
+      "version": "14.x",
+      "context": "Relational database for analytics data"
+    },
+    {
+      "name": "Docker",
+      "version": "latest",
+      "context": "Container platform for application deployment"
+    },
+    {
+      "name": "Kubernetes",
+      "version": "latest",
+      "context": "Container orchestration for managing microservices"
+    },
+    {
+      "name": "AWS SDK",
+      "version": "latest",
+      "context": "SDK for interacting with AWS services like S3, Lambda, etc."
+    }
+  ],
+  "projectDocumentation": [
+    {
+      "name": "Project Execution Plan",
+      "path": "AdCraft-Project-Execution-Plan.md",
+      "description": "Comprehensive implementation blueprint with task board and guidelines"
+    },
+    {
+      "name": "Documentation Index",
+      "path": "AdCraft-Documentation-Index.md",
+      "description": "Central index of all project documentation"
+    },
+    {
+      "name": "Code Audit Report",
+      "path": "AdCraft-Code-Audit-Report.md",
+      "description": "Assessment of the current state with recommendations"
+    },
+    {
+      "name": "Technical Architecture",
+      "path": "AdCraft - Technical Architecture.md",
+      "description": "Detailed system architecture, database schema, and infrastructure design"
+    },
+    {
+      "name": "Implementation Guide",
+      "path": "AdCraft - Implementation Guide.md",
+      "description": "Step-by-step instructions for setting up the initial project infrastructure"
+    }
+  ],
+  "currentPhase": {
+    "name": "Foundation & Project Setup",
+    "description": "Establishing the core infrastructure, repository structure, and development environment",
+    "tasks": [
+      {
+        "id": "F-001",
+        "title": "Initialize NX monorepo structure",
+        "priority": "Critical",
+        "status": "To Do"
+      },
+      {
+        "id": "F-002",
+        "title": "Set up React frontend application",
+        "priority": "Critical",
+        "status": "To Do"
+      },
+      {
+        "id": "F-003",
+        "title": "Set up NestJS backend services structure",
+        "priority": "Critical",
+        "status": "To Do"
+      },
+      {
+        "id": "F-004",
+        "title": "Configure Git repository and branch strategy",
+        "priority": "High",
+        "status": "To Do"
+      },
+      {
+        "id": "F-005",
+        "title": "Set up Docker environment with docker-compose",
+        "priority": "High",
+        "status": "To Do"
+      }
+    ]
+  }
+}

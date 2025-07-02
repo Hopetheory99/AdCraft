@@ -1,0 +1,119 @@
+{
+  "project": "AdCraft",
+  "description": "A comprehensive platform for creating, managing, and optimizing digital advertisements across multiple formats and channels",
+  "problemSolvingFramework": {
+    "architecturalDecisions": {
+      "steps": [
+        "Understand the specific architectural requirement or challenge",
+        "Identify constraints (performance, scalability, security, etc.)",
+        "Consider multiple architectural patterns that might apply",
+        "Evaluate each pattern against project requirements",
+        "Consider impacts on existing architecture and services",
+        "Assess implementation complexity and technical debt",
+        "Propose the optimal solution with clear justification",
+        "Identify potential risks and mitigation strategies"
+      ],
+      "estimatedThoughts": 8
+    },
+    "featureImplementation": {
+      "steps": [
+        "Break down the feature into specific technical requirements",
+        "Identify affected components (frontend, backend services, database)",
+        "Design the data model and API contracts",
+        "Consider cross-cutting concerns (security, performance, etc.)",
+        "Map out implementation steps with dependencies",
+        "Identify test cases and validation criteria",
+        "Consider edge cases and error handling",
+        "Plan for monitoring and observability"
+      ],
+      "estimatedThoughts": 8
+    },
+    "bugResolution": {
+      "steps": [
+        "Understand the reported issue and reproduce if possible",
+        "Identify relevant components and code paths",
+        "Analyze logs, error messages, and system state",
+        "Form initial hypotheses about root causes",
+        "Test hypotheses systematically",
+        "Isolate the specific cause of the issue",
+        "Design a fix that addresses the root cause",
+        "Create regression tests to prevent future occurrences"
+      ],
+      "estimatedThoughts": 8
+    },
+    "performanceOptimization": {
+      "steps": [
+        "Establish performance baseline with measurable metrics",
+        "Identify bottlenecks through profiling and analysis",
+        "Prioritize bottlenecks based on impact and complexity",
+        "Consider optimization strategies for each bottleneck",
+        "Evaluate trade-offs (complexity vs. performance gain)",
+        "Implement optimizations iteratively",
+        "Measure impact of each optimization",
+        "Document findings and approaches for future reference"
+      ],
+      "estimatedThoughts": 8
+    },
+    "securityReview": {
+      "steps": [
+        "Identify assets and potential threat vectors",
+        "Review authentication and authorization mechanisms",
+        "Assess data validation and input sanitization",
+        "Examine data protection at rest and in transit",
+        "Check for proper error handling and logging",
+        "Review third-party dependencies for vulnerabilities",
+        "Evaluate rate limiting and DoS protection",
+        "Compile findings with CVSS scoring and remediation priorities"
+      ],
+      "estimatedThoughts": 8
+    }
+  },
+  "currentPhase": {
+    "name": "Foundation & Project Setup",
+    "description": "Establishing the core infrastructure, repository structure, and development environment",
+    "keyConsiderations": [
+      "Ensure the microservices architecture is properly structured",
+      "Follow TypeScript best practices for type sharing across services",
+      "Implement proper error handling and logging from the start",
+      "Configure CI/CD pipeline with appropriate test coverage requirements",
+      "Set up Docker environments that mirror production as closely as possible",
+      "Establish code quality gates through ESLint and Prettier"
+    ]
+  },
+  "technicalPrinciples": [
+    "Microservices should have clear boundaries and own their data",
+    "Frontend state management should follow the Redux pattern",
+    "APIs should follow RESTful design with versioning",
+    "Error responses should be consistent across all services",
+    "Shared code should be extracted into libraries",
+    "Services should be stateless when possible",
+    "Infrastructure should be defined as code",
+    "Monitoring and observability should be built in from the start"
+  ],
+  "codingStandards": {
+    "typescript": [
+      "Use explicit types over any/unknown",
+      "Leverage interfaces for object shapes",
+      "Use enums for finite sets of values",
+      "Implement proper error handling with custom error classes",
+      "Use async/await for asynchronous operations",
+      "Follow functional programming principles where appropriate"
+    ],
+    "react": [
+      "Use functional components with hooks",
+      "Implement proper component separation (atoms, molecules, organisms)",
+      "Follow container/presentational pattern",
+      "Use React.memo for performance optimization",
+      "Implement proper error boundaries",
+      "Keep components focused on a single responsibility"
+    ],
+    "nestjs": [
+      "Use decorators consistently",
+      "Implement proper validation with class-validator",
+      "Use dependency injection for all services",
+      "Implement custom exception filters",
+      "Use interceptors for cross-cutting concerns",
+      "Follow module pattern for feature organization"
+    ]
+  }
+}

@@ -1,0 +1,179 @@
+version: '3.8'
+
+services:
+  # Frontend service
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src/frontend:/app/src/frontend
+      - node_modules_frontend:/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - API_URL=http://api-gateway:3001
+    depends_on:
+      - api-gateway
+    networks:
+      - adcraft-network
+
+  # API Gateway
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./src/backend/services/api-gateway:/app/src/backend/services/api-gateway
+      - node_modules_backend:/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - AUTH_SERVICE_URL=http://auth-service:3002
+      - ASSET_SERVICE_URL=http://asset-service:3003
+      - TEMPLATE_SERVICE_URL=http://template-service:3004
+      - AD_SERVICE_URL=http://ad-service:3005
+    depends_on:
+      - auth-service
+      - asset-service
+      - template-service
+      - ad-service
+    networks:
+      - adcraft-network
+
+  # Auth Service
+  auth-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./src/backend/services/auth-service:/app/src/backend/services/auth-service
+      - node_modules_backend:/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3002
+      - MONGODB_URI=mongodb://mongodb:27017/adcraft-auth
+      - JWT_SECRET=development_jwt_secret
+      - JWT_EXPIRATION=15m
+      - REFRESH_TOKEN_EXPIRATION=7d
+    depends_on:
+      - mongodb
+    networks:
+      - adcraft-network
+
+  # Asset Service
+  asset-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "3003:3003"
+    volumes:
+      - ./src/backend/services/asset-service:/app/src/backend/services/asset-service
+      - node_modules_backend:/app/node_modules
+      - asset-uploads:/app/uploads
+    environment:
+      - NODE_ENV=development
+      - PORT=3003
+      - MONGODB_URI=mongodb://mongodb:27017/adcraft-assets
+      - AWS_REGION=us-east-1
+      - AWS_S3_BUCKET=adcraft-local-assets
+      - LOCALSTACK_ENDPOINT=http://localstack:4566
+    depends_on:
+      - mongodb
+      - localstack
+    networks:
+      - adcraft-network
+
+  # Template Service
+  template-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "3004:3004"
+    volumes:
+      - ./src/backend/services/template-service:/app/src/backend/services/template-service
+      - node_modules_backend:/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3004
+      - MONGODB_URI=mongodb://mongodb:27017/adcraft-templates
+    depends_on:
+      - mongodb
+    networks:
+      - adcraft-network
+
+  # Ad Creation Service
+  ad-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "3005:3005"
+    volumes:
+      - ./src/backend/services/ad-service:/app/src/backend/services/ad-service
+      - node_modules_backend:/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3005
+      - MONGODB_URI=mongodb://mongodb:27017/adcraft-ads
+      - ASSET_SERVICE_URL=http://asset-service:3003
+      - TEMPLATE_SERVICE_URL=http://template-service:3004
+    depends_on:
+      - mongodb
+      - asset-service
+      - template-service
+    networks:
+      - adcraft-network
+
+  # MongoDB
+  mongodb:
+    image: mongo:5
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - adcraft-network
+
+  # Redis for caching
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - adcraft-network
+
+  # LocalStack for AWS services emulation
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,lambda
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+      - localstack_data:/tmp/localstack
+    networks:
+      - adcraft-network
+
+networks:
+  adcraft-network:
+    driver: bridge
+
+volumes:
+  node_modules_frontend:
+  node_modules_backend:
+  mongodb_data:
+  redis_data:
+  localstack_data:
+  asset-uploads:

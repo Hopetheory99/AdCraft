@@ -1,0 +1,41 @@
+# Multi-stage build for backend services
+
+# Stage 1: Development - Base image with all dependencies
+FROM node:18-alpine AS dev
+
+WORKDIR /app
+
+# Copy package.json and install dependencies
+COPY package*.json ./
+RUN npm ci
+
+# Copy the rest of the code
+COPY . .
+
+# Default command for development
+CMD ["sh", "-c", "npx nx serve $SERVICE_NAME --host 0.0.0.0"]
+
+# Stage 2: Build - Create production build
+FROM dev AS build
+
+ARG SERVICE_NAME
+RUN npx nx build $SERVICE_NAME --prod
+
+# Stage 3: Production - Slim runtime image
+FROM node:18-alpine AS prod
+
+WORKDIR /app
+
+# Copy only production dependencies
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copy the build output from the build stage
+ARG SERVICE_NAME
+COPY --from=build /app/dist/apps/$SERVICE_NAME ./
+
+# Environment variables
+ENV NODE_ENV=production
+
+# Run the application
+CMD ["node", "main.js"]
