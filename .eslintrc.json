@@ -6,11 +6,7 @@
     "es2021": true,
     "jest": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2021,
@@ -19,10 +15,7 @@
       "jsx": true
     }
   },
-  "plugins": [
-    "@typescript-eslint",
-    "import"
-  ],
+  "plugins": ["@typescript-eslint", "import"],
   "rules": {
     "import/order": [
       "error",
@@ -35,6 +28,13 @@
           "index",
           "object",
           "type"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@adcraft/**",
+            "group": "internal",
+            "position": "before"
+          }
         ],
         "newlines-between": "always",
         "alphabetize": {

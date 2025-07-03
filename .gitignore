@@ -18,6 +18,7 @@ coverage/
 .env.development.local
 .env.test.local
 .env.production.local
+packages/auth-service/.env
 
 # Package managers
 npm-debug.log*

@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile.frontend
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - ./src/frontend:/app/src/frontend
       - node_modules_frontend:/app/node_modules
@@ -25,7 +25,7 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     ports:
-      - "3001:3001"
+      - '3001:3001'
     volumes:
       - ./src/backend/services/api-gateway:/app/src/backend/services/api-gateway
       - node_modules_backend:/app/node_modules
@@ -50,7 +50,7 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     ports:
-      - "3002:3002"
+      - '3002:3002'
     volumes:
       - ./src/backend/services/auth-service:/app/src/backend/services/auth-service
       - node_modules_backend:/app/node_modules
@@ -72,7 +72,7 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     ports:
-      - "3003:3003"
+      - '3003:3003'
     volumes:
       - ./src/backend/services/asset-service:/app/src/backend/services/asset-service
       - node_modules_backend:/app/node_modules
@@ -96,7 +96,7 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     ports:
-      - "3004:3004"
+      - '3004:3004'
     volumes:
       - ./src/backend/services/template-service:/app/src/backend/services/template-service
       - node_modules_backend:/app/node_modules
@@ -115,7 +115,7 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     ports:
-      - "3005:3005"
+      - '3005:3005'
     volumes:
       - ./src/backend/services/ad-service:/app/src/backend/services/ad-service
       - node_modules_backend:/app/node_modules
@@ -136,7 +136,7 @@ services:
   mongodb:
     image: mongo:5
     ports:
-      - "27017:27017"
+      - '27017:27017'
     volumes:
       - mongodb_data:/data/db
     networks:
@@ -146,7 +146,7 @@ services:
   redis:
     image: redis:alpine
     ports:
-      - "6379:6379"
+      - '6379:6379'
     volumes:
       - redis_data:/data
     networks:
@@ -156,7 +156,7 @@ services:
   localstack:
     image: localstack/localstack
     ports:
-      - "4566:4566"
+      - '4566:4566'
     environment:
       - SERVICES=s3,lambda
       - DEBUG=1

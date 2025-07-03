@@ -1,51 +1,57 @@
 # AdCraft
 
-Craft your Ads with AI - A comprehensive platform for creating, managing, and optimizing digital advertisements across multiple formats and channels.
+## Overview
+AdCraft is a modern ad creation platform built with React, Redux Toolkit, TypeScript, Material-UI, and Nx monorepo architecture. It features:
+- Modular frontend and backend
+- State management with Redux Toolkit
+- Asset, template, and project management
+- Ad editor with Fabric.js
 
-## Project Overview
-
-AdCraft is designed to democratize high-quality ad creation by providing intuitive tools that blend creativity with data-driven insights. The platform combines a user-friendly interface with powerful editing capabilities, template systems, and analytics to help businesses create effective advertisements without specialized design skills.
-
-## Technology Stack
-
-- **Frontend**: React, TypeScript, Material-UI, Fabric.js
-- **Backend**: Node.js, NestJS, Express
-- **Database**: MongoDB, PostgreSQL, Redis
-- **Infrastructure**: Docker, Kubernetes, AWS
-- **CI/CD**: GitHub Actions
-
-## Key Features
-
-- User authentication and account management
-- Asset management system
-- Canvas-based ad editor
-- Template system for quick ad creation
-- Publishing to multiple platforms
-- Analytics and performance tracking
-- A/B testing and optimization
-- Team collaboration features
-- Subscription and monetization
-
-## Documentation
-
-For detailed information about the project, please refer to these key documents:
-
-- [Project Execution Plan](./AdCraft-Project-Execution-Plan.md) - Comprehensive implementation blueprint with task board and guidelines
-- [Documentation Index](./AdCraft-Documentation-Index.md) - Central index of all project documentation
-- [Code Audit Report](./AdCraft-Code-Audit-Report.md) - Assessment of the current state with recommendations
+## Project Structure
+```
+AdCraft/
+├── packages/
+│   ├── frontend/
+│   │   └── frontend/
+│   │       └── src/
+│   │           └── app/
+│   │               ├── slices/
+│   │               │   ├── authSlice.ts
+│   │               │   ├── adsSlice.ts
+│   │               │   ├── templatesSlice.ts
+│   │               │   ├── assetsSlice.ts
+│   │               │   └── projectsSlice.ts
+│   │               └── store.ts
+│   └── auth-service/
+│       └── ...
+├── docs/
+├── logbook/
+├── ...
+```
 
 ## Getting Started
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Run the frontend:
+   ```bash
+   nx serve frontend
+   ```
+3. Run the backend:
+   ```bash
+   nx serve auth-service
+   ```
 
-To begin working on the AdCraft project:
-
-1. Review the [Project Execution Plan](./AdCraft-Project-Execution-Plan.md)
-2. Follow the setup instructions in the Implementation Guide
-3. Pick up tasks from the Project Task Board based on the current phase
-
-## Current Status
-
-The project is currently in the early stages with comprehensive planning and documentation completed. Implementation is beginning with the Foundation & Project Setup phase, focusing on establishing the core infrastructure, repository structure, and development environment.
+## State Management
+Redux slices are located in `src/app/slices/`. The store is configured in `src/app/store.ts`.
 
 ## Contributing
+- Follow the code style enforced by Prettier and ESLint.
+- See `CONTRIBUTING.md` for more details.
 
-Please follow the coding standards and guidelines outlined in the Project Execution Plan when contributing to this project.
+## Documentation
+- See the `docs/` folder for architecture, implementation, and usage guides.
+
+## License
+MIT

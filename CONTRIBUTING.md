@@ -18,27 +18,31 @@ By participating in this project, you agree to uphold our Code of Conduct, which
 ### Getting Started
 
 1. Fork the repository and clone your fork:
+
    ```bash
    git clone https://github.com/your-username/adcraft.git
    cd adcraft
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Set up development environment:
+
    ```bash
    # Start the development environment using Docker
    docker-compose up -d
    ```
 
 4. Start the development server:
+
    ```bash
    # For frontend development
    npx nx serve frontend
-   
+
    # For a specific backend service
    npx nx serve auth-service
    ```
@@ -53,6 +57,7 @@ By participating in this project, you agree to uphold our Code of Conduct, which
 ## Development Workflow
 
 1. Create a new branch for your feature or bugfix:
+
    ```bash
    git checkout develop
    git pull
@@ -62,13 +67,14 @@ By participating in this project, you agree to uphold our Code of Conduct, which
 2. Make your changes, following the [Coding Standards](#coding-standards)
 
 3. Run tests and linting:
+
    ```bash
    # Run linting
    npm run lint
-   
+
    # Run tests for a specific project
    npx nx test [project-name]
-   
+
    # Run all tests
    npx nx run-many --target=test --all
    ```
