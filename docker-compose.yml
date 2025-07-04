@@ -57,12 +57,16 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=3002
-      - MONGODB_URI=mongodb://mongodb:27017/adcraft-auth
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USERNAME=user
+      - DB_PASSWORD=password
+      - DB_DATABASE=adcraft_auth
       - JWT_SECRET=development_jwt_secret
       - JWT_EXPIRATION=15m
       - REFRESH_TOKEN_EXPIRATION=7d
     depends_on:
-      - mongodb
+      - postgres
     networks:
       - adcraft-network
 
@@ -132,13 +136,27 @@ services:
     networks:
       - adcraft-network
 
-  # MongoDB
+  # MongoDB (still needed for other services)
   mongodb:
     image: mongo:5
     ports:
       - '27017:27017'
     volumes:
       - mongodb_data:/data/db
+    networks:
+      - adcraft-network
+
+  # PostgreSQL for Auth Service
+  postgres:
+    image: postgres:13
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: adcraft_auth
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - adcraft-network
 
@@ -177,3 +195,4 @@ volumes:
   redis_data:
   localstack_data:
   asset-uploads:
+  postgres_data:

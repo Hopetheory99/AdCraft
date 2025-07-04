@@ -2,7 +2,7 @@
 
 ## Overview
 AdCraft is a modern ad creation platform built with React, Redux Toolkit, TypeScript, Material-UI, and Nx monorepo architecture. It features:
-- Modular frontend and backend
+- Modular frontend (React) and backend (NestJS microservices, with PostgreSQL for authentication)
 - State management with Redux Toolkit
 - Asset, template, and project management
 - Ad editor with Fabric.js
