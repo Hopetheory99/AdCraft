@@ -1,6 +1,6 @@
 # AdCraft Backend Services
 
-This directory outlines core backend microservices used by the AdCraft platform. Each service is implemented with Express and can be run individually.
+This directory outlines core backend microservices used by the AdCraft platform. Each service is implemented with NestJS and can be run individually.
 
 ## Services
 
@@ -14,7 +14,7 @@ This directory outlines core backend microservices used by the AdCraft platform.
 
   - Provides `/register`, `/login`, `/refresh` and `/users` endpoints.
   - Issues JWT access and refresh tokens.
-  - Stores users in memory (for demo purposes).
+  - Persists users via a database using TypeORM.
 
 - **Asset Service** (`packages/asset-service`)
 
@@ -28,7 +28,7 @@ This directory outlines core backend microservices used by the AdCraft platform.
 - **Template Service** (`packages/template-service`)
   - CRUD endpoints for ad templates.
 
-Each service exposes a simple Express application and has accompanying Jest tests.
+Each service exposes a NestJS application and has accompanying Jest tests.
 
 ## MCP Servers
 
