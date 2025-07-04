@@ -6,7 +6,6 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 
 | Task ID      | Description                                                | Priority | Assigned To |
 | :----------- | :--------------------------------------------------------- | :------- | :---------- |
-| **AUTH-002** | Implement user registration with password hashing (bcrypt) | High     | codex       |
 | **AUTH-003** | Implement user login and JWT generation                    | High     | codex       |
 | **GW-001**   | Scaffold new `api-gateway` using NestJS                    | High     | codex       |
 | **GW-002**   | Implement dynamic service discovery                        | High     | codex       |
@@ -22,6 +21,7 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 | Task ID      | Description                              | Priority | Assigned To |
 | :----------- | :--------------------------------------- | :------- | :---------- |
 | **AUTH-001** | Scaffold new `auth-service` using NestJS | High     | Cline       |
+| **AUTH-002** | Implement user registration with password hashing (bcrypt) | High     | codex       |
 
 ## Done
 
