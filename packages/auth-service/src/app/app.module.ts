@@ -24,7 +24,7 @@ import { User } from './user.entity';
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
         autoLoadEntities: true,
-        synchronize: true, // Note: synchronize should be false in production
+        synchronize: configService.get<string>('DB_SYNC', 'false').toLowerCase() === 'true', // do not enable in production
       }),
       inject: [ConfigService],
     }),

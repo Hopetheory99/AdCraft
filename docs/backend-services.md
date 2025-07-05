@@ -14,7 +14,6 @@ This directory outlines core backend microservices used by the AdCraft platform.
 
   - Provides `/register`, `/login`, `/refresh` and `/users` endpoints.
   - Issues JWT access and refresh tokens.
-  - Persists users in **PostgreSQL** via TypeORM.
 
 - **Asset Service** (`packages/asset-service`)
 
