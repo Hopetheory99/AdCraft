@@ -1,22 +1,17 @@
 {
   "npmScope": "adcraft",
-  "affected": {
-    "defaultBase": "main"
-  },
+  "affected": { "defaultBase": "main" },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "YOUR_NX_CLOUD_ACCESS_TOKEN"
+        "accessToken": "NGU0NzFjODctMDI4ZC00NGRmLWI1MTUtOGFkNTcyZjc3M2VkfHJlYWQtd3JpdGU="
       }
     }
   },
   "targetDefaults": {
-    "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
+    "build": { "dependsOn": ["^build"], "inputs": ["production", "^production"] },
     "test": {
       "inputs": [
         "default",
@@ -25,12 +20,8 @@
         "{workspaceRoot}/jest.preset.js"
       ]
     },
-    "e2e": {
-      "inputs": ["default", "^production"]
-    },
-    "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
-    }
+    "e2e": { "inputs": ["default", "^production"] },
+    "lint": { "inputs": ["default", "{workspaceRoot}/.eslintrc.json"] }
   },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
@@ -51,20 +42,10 @@
         "bundler": "webpack",
         "babel": true
       },
-      "component": {
-        "style": "styled-components"
-      },
-      "library": {
-        "style": "styled-components",
-        "linter": "eslint"
-      }
+      "component": { "style": "styled-components" },
+      "library": { "style": "styled-components", "linter": "eslint" }
     },
-    "@nrwl/next": {
-      "application": {
-        "style": "styled-components",
-        "linter": "eslint"
-      }
-    }
+    "@nrwl/next": { "application": { "style": "styled-components", "linter": "eslint" } }
   },
   "defaultProject": "frontend"
 }
