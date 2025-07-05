@@ -11,6 +11,9 @@ export class User {
   @Column()
   password_hash!: string;
 
+  @Column({ nullable: true })
+  refresh_token!: string | null;
+
   @Column({ default: 'user' })
   role!: string;
 
