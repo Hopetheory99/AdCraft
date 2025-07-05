@@ -1,7 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+interface Project {
+  id: string;
+  name: string;
+  description?: string;
+}
 
 interface ProjectsState {
-  projects: any[];
+  projects: Project[];
   loading: boolean;
   error: string | null;
 }
@@ -16,13 +22,13 @@ const projectsSlice = createSlice({
   name: 'projects',
   initialState,
   reducers: {
-    setProjects(state, action) {
+    setProjects(state, action: PayloadAction<Project[]>) {
       state.projects = action.payload;
     },
-    setLoading(state, action) {
+    setLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
     },
-    setError(state, action) {
+    setError(state, action: PayloadAction<string | null>) {
       state.error = action.payload;
     },
     clearError(state) {
