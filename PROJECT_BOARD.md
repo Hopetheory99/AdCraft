@@ -35,3 +35,4 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 | **PROJ-001** | Perform full code audit of original codebase                | Critical | Cline       | `2025-07-03-PROJ-001-CodeAudit.md`      |
 | **PROJ-002** | Demolish old codebase and reset project structure           | Critical | Cline       | `2025-07-03-PROJ-002-ProjectReset.md`   |
 | **PROJ-003** | Establish agent guidelines and project management framework | Critical | Cline       | `2025-07-03-PROJ-003-AgentFramework.md` |
+| **DOCS-002** | Document PostgreSQL usage for `auth-service`                | Low      | codex       | `2025-07-05-DOCS-002-PostgresUpdate.md` |
