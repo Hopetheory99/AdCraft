@@ -11,6 +11,12 @@ export class User {
   @Column()
   password_hash!: string;
 
+  @Column({ nullable: true })
+  refreshToken?: string;
+
+  @Column({ type: 'timestamp', nullable: true })
+  refreshTokenExpiresAt?: Date;
+
   @Column({ default: 'user' })
   role!: string;
 

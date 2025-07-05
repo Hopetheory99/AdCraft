@@ -1,30 +1,19 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { typeOrmAsyncConfig } from '../typeorm.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: './packages/auth-service/.env',
+      // envFilePath: './packages/auth-service/.env', // Removed hardcoded path for better flexibility in production/containerized environments
     }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get<string>('DB_HOST'),
-        port: configService.get<number>('DB_PORT'),
-        username: configService.get<string>('DB_USERNAME'),
-        password: configService.get<string>('DB_PASSWORD'),
-        database: configService.get<string>('DB_DATABASE'),
-        autoLoadEntities: true,
-        synchronize: true, // Note: synchronize should be false in production
-      }),
-      inject: [ConfigService],
-    }),
+    TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
