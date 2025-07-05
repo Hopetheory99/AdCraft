@@ -1,0 +1,16 @@
+# Declare files that will always have LF line endings
+* text=auto eol=lf
+
+# Specific file types to ensure LF
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.html text eol=lf
+*.sh text e eol=lf

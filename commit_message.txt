@@ -1,0 +1,20 @@
+feat(auth): Implement full-stack authentication and database migrations
+
+This commit introduces comprehensive authentication functionality across both
+the backend `auth-service` and the frontend application, along with a robust
+database migration system.
+
+Key backend changes:
+- Implemented user registration, login, and protected profile endpoints.
+- Integrated JWT-based authentication with Passport strategies (Local and JWT).
+- Added refresh token functionality to enhance security and user experience.
+- Configured TypeORM for database migrations, disabling `synchronize: true` for production readiness.
+- Generated an initial migration for the `User` entity, including `refreshToken` and `refreshTokenExpiresAt` fields.
+- Corrected module import paths and resolved build issues in `auth-service`.
+
+Key frontend changes:
+- Implemented Redux Thunks in `authSlice` for asynchronous API interaction (register, login).
+- Improved type safety in `authSlice` with dedicated `User` and `Tokens` interfaces.
+- Created `auth.service.ts` for centralized API calls to the authentication backend.
+- Developed `Register`, `Login`, `Profile`, and `ProtectedRoute` React components for the UI.
+- Integrated authentication routes and navigation into `app.tsx`.

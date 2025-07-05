@@ -6,6 +6,7 @@ import { User } from '../user.entity';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config'; // Import ConfigService
 import { v4 as uuidv4 } from 'uuid'; // Import uuid for refresh token
+import { RegisterDto } from './auth.dto';
 
 @Injectable()
 export class AuthService {
@@ -16,9 +17,9 @@ export class AuthService {
     private configService: ConfigService, // Inject ConfigService
   ) {}
 
-  async register(email: string, password: string): Promise<User> {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = this.usersRepository.create({ email, password_hash: hashedPassword });
+  async register(registerDto: RegisterDto): Promise<User> {
+    const hashedPassword = await bcrypt.hash(registerDto.password, 10);
+    const user = this.usersRepository.create({ email: registerDto.email, password_hash: hashedPassword });
     return this.usersRepository.save(user);
   }
 

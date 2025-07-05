@@ -12,9 +12,10 @@ This directory outlines core backend microservices used by the AdCraft platform.
 
 - **Authentication Service** (`packages/auth-service`)
 
-  - Provides `/register`, `/login`, `/refresh` and `/users` endpoints.
-  - Issues JWT access and refresh tokens.
-  - Stores users in memory (for demo purposes).
+  - Provides `/register`, `/login`, `/refresh`, `/profile` and `/users` endpoints.
+  - Issues JWT access and refresh tokens, with refresh token rotation and secure storage.
+  - **Security Note:** JWT secrets are now managed via environment variables, not hardcoded.
+  - Stores user data in a PostgreSQL database.
 
 - **Asset Service** (`packages/asset-service`)
 

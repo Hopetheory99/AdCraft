@@ -30,15 +30,36 @@ AdCraft/
 ```
 
 ## Getting Started
-1. Install dependencies:
+1. **Database Setup (for `auth-service`):**
+   Create a `.env` file in `packages/auth-service/` with the following content:
+   ```
+   DB_HOST=localhost
+   DB_PORT=5432
+   DB_USERNAME=user
+   DB_PASSWORD=password
+   DB_DATABASE=adcraft_auth
+   JWT_SECRET=your_super_secret_jwt_key
+   JWT_REFRESH_TOKEN_EXPIRATION_DAYS=7
+   ```
+   **Note:** Replace `your_super_secret_jwt_key` with a strong, unique secret.
+
+2. Install dependencies:
    ```bash
    npm install
    ```
-2. Run the frontend:
+
+3. Run database migrations (for `auth-service`):
+   Ensure your PostgreSQL database is running (e.g., via `docker-compose up -d postgres`). Then run:
+   ```bash
+   npm run typeorm:run-migrations
+   ```
+
+4. Run the frontend:
    ```bash
    nx serve frontend
    ```
-3. Run the backend:
+
+5. Run the backend:
    ```bash
    nx serve auth-service
    ```
