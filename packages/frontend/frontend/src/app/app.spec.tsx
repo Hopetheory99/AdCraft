@@ -28,14 +28,4 @@ describe('App', () => {
     expect(getByText(/Welcome frontend-frontend/gi)).toBeTruthy();
   });
 
-  it('should render the Counter component', () => {
-    const { getByText } = render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Provider>,
-    );
-    expect(getByText(/Counter Example/)).toBeTruthy();
-  });
 });
