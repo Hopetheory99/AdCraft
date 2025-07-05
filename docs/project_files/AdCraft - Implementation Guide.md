@@ -179,8 +179,13 @@ AWS_S3_BUCKET=adcraft-assets
 # Server
 PORT=3000
 NODE_ENV=development
+DB_SYNC=false
 EOL
 ```
+
+> **Warning**
+> Enable `DB_SYNC` only for local development. Schema synchronization can drop
+> or alter tables and should never be used in production.
 
 ### Step 5: Set Up CI/CD with GitHub Actions
 
