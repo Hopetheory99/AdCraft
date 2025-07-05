@@ -56,7 +56,6 @@
       "executor": "@nrwl/vite:test",
       "outputs": ["coverage/packages/frontend/frontend"],
       "options": {
-        "passWithNoTests": true,
         "reportsDirectory": "../../../coverage/packages/frontend/frontend"
       }
     },
