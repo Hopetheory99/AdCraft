@@ -16,4 +16,10 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/auth-service-e2e',
+  coverageThreshold: {
+    global: {
+      lines: 80,
+      branches: 80,
+    },
+  },
 };

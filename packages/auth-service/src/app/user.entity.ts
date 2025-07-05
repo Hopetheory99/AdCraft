@@ -11,15 +11,15 @@ export class User {
   @Column()
   password_hash!: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'text' })
   refresh_token!: string | null;
 
   @Column({ default: 'user' })
   role!: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   created_at!: Date;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updated_at!: Date;
 }

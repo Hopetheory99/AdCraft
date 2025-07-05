@@ -37,6 +37,8 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npx nx run-many --target=test --all
+      - name: Run auth-service e2e tests
+        run: npx nx run auth-service-e2e:e2e --configuration=ci
 
   build:
     name: Build
