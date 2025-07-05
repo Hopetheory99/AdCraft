@@ -187,6 +187,10 @@ EOL
 > Enable `DB_SYNC` only for local development. Schema synchronization can drop
 > or alter tables and should never be used in production.
 
+> **Note**
+> The auth service reads configuration from the path specified in `AUTH_ENV_PATH`.
+> If this variable is not set, it defaults to `.env`.
+
 ### Step 5: Set Up CI/CD with GitHub Actions
 
 Create a basic GitHub Actions workflow for CI/CD:

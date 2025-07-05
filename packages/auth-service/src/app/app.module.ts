@@ -13,7 +13,7 @@ import { User } from './user.entity';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: './packages/auth-service/.env',
+      envFilePath: process.env.AUTH_ENV_PATH || '.env',
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
