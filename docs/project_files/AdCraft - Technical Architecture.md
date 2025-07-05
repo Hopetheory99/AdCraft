@@ -28,7 +28,7 @@ graph TD
 - Social login integration
 - Password recovery
 
-**Database**: MongoDB (user profiles, credentials, roles)
+**Database**: PostgreSQL (user profiles, credentials, roles)
 
 **APIs**:
 
@@ -156,25 +156,22 @@ erDiagram
     AD }o--|| TEMPLATE : "based on"
 ```
 
-### MongoDB Collections
+### Database Schemas
 
-#### Users Collection
+The authentication service uses **PostgreSQL** while other services continue to rely on MongoDB.
 
-```
-{
-  _id: ObjectId,
-  email: String,
-  password: String (hashed),
-  name: String,
-  role: String,
-  teams: [ObjectId],
-  preferences: {
-    theme: String,
-    notifications: Boolean
-  },
-  createdAt: Date,
-  lastLogin: Date
-}
+#### Users Table (PostgreSQL)
+
+```sql
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  name VARCHAR(255),
+  role VARCHAR(50) DEFAULT 'user',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 ```
 
 #### Assets Collection
@@ -462,9 +459,9 @@ The architecture is designed for horizontal scalability with the following consi
 
 2. **Database Scaling**:
 
-   - MongoDB sharding for document stores
-   - PostgreSQL read replicas for analytics
-   - Connection pooling
+  - MongoDB sharding for document stores
+  - PostgreSQL replication for the authentication service and analytics
+  - Connection pooling
 
 3. **Caching Strategy**:
 

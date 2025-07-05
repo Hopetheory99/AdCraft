@@ -14,10 +14,6 @@ This directory outlines core backend microservices used by the AdCraft platform.
 
   - Provides `/register`, `/login`, `/refresh` and `/users` endpoints.
   - Issues JWT access and refresh tokens.
-  - Persists users via a database using TypeORM.
-  - Set `DB_SYNC` to `true` for local development if you want TypeORM to
-    synchronize entities with the database schema. **Never enable this in
-    production.**
 
 - **Asset Service** (`packages/asset-service`)
 
