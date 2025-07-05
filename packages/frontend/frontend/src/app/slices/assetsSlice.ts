@@ -1,7 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+interface Asset {
+  id: string;
+  url: string;
+  type: string;
+}
 
 interface AssetsState {
-  assets: any[];
+  assets: Asset[];
   loading: boolean;
   error: string | null;
 }
@@ -16,13 +22,13 @@ const assetsSlice = createSlice({
   name: 'assets',
   initialState,
   reducers: {
-    setAssets(state, action) {
+    setAssets(state, action: PayloadAction<Asset[]>) {
       state.assets = action.payload;
     },
-    setLoading(state, action) {
+    setLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
     },
-    setError(state, action) {
+    setError(state, action: PayloadAction<string | null>) {
       state.error = action.payload;
     },
     clearError(state) {
