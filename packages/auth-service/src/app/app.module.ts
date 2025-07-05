@@ -4,6 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthController } from './auth.controller';
+import { AuthService } from './auth.service';
+import { User } from './user.entity';
 
 @Module({
   imports: [
@@ -21,12 +24,13 @@ import { AppService } from './app.service';
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
         autoLoadEntities: true,
-        synchronize: true, // Note: synchronize should be false in production
+        synchronize: configService.get<string>('DB_SYNC', 'false').toLowerCase() === 'true', // do not enable in production
       }),
       inject: [ConfigService],
     }),
+    TypeOrmModule.forFeature([User]),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, AuthController],
+  providers: [AppService, AuthService],
 })
 export class AppModule {}

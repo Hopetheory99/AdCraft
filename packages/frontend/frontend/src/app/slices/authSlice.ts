@@ -1,8 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+interface User {
+  id: string;
+  email: string;
+  name: string;
+  role: 'admin' | 'editor' | 'viewer';
+  teams: string[];
+  preferences: {
+    theme: 'light' | 'dark';
+    notifications: boolean;
+  };
+  createdAt: Date;
+  lastLogin?: Date;
+}
+
+interface Tokens {
+  accessToken: string;
+  refreshToken: string;
+}
 
 interface AuthState {
-  user: any;
-  tokens: any;
+  user: User | null;
+  tokens: Tokens | null;
   loading: boolean;
   error: string | null;
 }
@@ -18,16 +37,16 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setUser(state, action) {
+    setUser(state, action: PayloadAction<User | null>) {
       state.user = action.payload;
     },
     clearUser(state) {
       state.user = null;
     },
-    setLoading(state, action) {
+    setLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
     },
-    setError(state, action) {
+    setError(state, action: PayloadAction<string | null>) {
       state.error = action.payload;
     },
     clearError(state) {

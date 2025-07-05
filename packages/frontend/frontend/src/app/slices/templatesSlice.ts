@@ -1,7 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+interface Template {
+  id: string;
+  name: string;
+  html: string;
+}
 
 interface TemplatesState {
-  templates: any[];
+  templates: Template[];
   loading: boolean;
   error: string | null;
 }
@@ -16,13 +22,13 @@ const templatesSlice = createSlice({
   name: 'templates',
   initialState,
   reducers: {
-    setTemplates(state, action) {
+    setTemplates(state, action: PayloadAction<Template[]>) {
       state.templates = action.payload;
     },
-    setLoading(state, action) {
+    setLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
     },
-    setError(state, action) {
+    setError(state, action: PayloadAction<string | null>) {
       state.error = action.payload;
     },
     clearError(state) {

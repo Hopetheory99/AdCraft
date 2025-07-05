@@ -6,7 +6,6 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 
 | Task ID      | Description                                                | Priority | Assigned To |
 | :----------- | :--------------------------------------------------------- | :------- | :---------- |
-| **AUTH-002** | Implement user registration with password hashing (bcrypt) | High     | codex       |
 | **AUTH-003** | Implement user login and JWT generation                    | High     | codex       |
 | **GW-001**   | Scaffold new `api-gateway` using NestJS                    | High     | codex       |
 | **GW-002**   | Implement dynamic service discovery                        | High     | codex       |
@@ -21,6 +20,11 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 
 | Task ID      | Description                              | Priority | Assigned To |
 | :----------- | :--------------------------------------- | :------- | :---------- |
+| **AUTH-001** | Scaffold new `auth-service` using NestJS | High     | Cline       |
+| **AUTH-002** | Implement user registration with password hashing (bcrypt) | High     | codex       |
+
+## Done
+
 
 | Task ID      | Description                                                 | Priority | Assigned To | Logbook Entry                           |
 | :----------- | :---------------------------------------------------------- | :------- | :---------- | :-------------------------------------- |
@@ -33,3 +37,4 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 | **PROJ-001** | Perform full code audit of original codebase                | Critical | Cline       | `2025-07-03-PROJ-001-CodeAudit.md`      |
 | **PROJ-002** | Demolish old codebase and reset project structure           | Critical | Cline       | `2025-07-03-PROJ-002-ProjectReset.md`   |
 | **PROJ-003** | Establish agent guidelines and project management framework | Critical | Cline       | `2025-07-03-PROJ-003-AgentFramework.md` |
+| **DOCS-002** | Document PostgreSQL usage for `auth-service`                | Low      | codex       | `2025-07-05-DOCS-002-PostgresUpdate.md` |
