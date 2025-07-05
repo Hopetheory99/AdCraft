@@ -43,6 +43,17 @@ AdCraft/
    nx serve auth-service
    ```
 
+## CI/CD Configuration
+Nx Cloud requires an access token for remote caching. Store this value as the `NX_CLOUD_ACCESS_TOKEN` environment variable and expose it during your build steps.
+
+### GitHub Actions example
+```yaml
+- name: Build
+  run: npx nx affected --target=build
+  env:
+    NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+```
+
 ## State Management
 Redux slices are located in `src/app/slices/`. The store is configured in `src/app/store.ts`.
 
