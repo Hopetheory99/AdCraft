@@ -195,6 +195,7 @@ EOL
 > `RATE_LIMIT_WINDOW_MS` and `RATE_LIMIT_MAX` control request throttling. They default to `60000` (1 minute) and `100` requests.
 > The API gateway reads service proxy mappings from `SERVICE_ROUTES`.
 > Example: `SERVICE_ROUTES="auth=http://localhost:3001"` will proxy requests starting with `/auth` to that URL. The gateway's `.env` path can be set with `GATEWAY_ENV_PATH`.
+> The gateway validates JWT tokens on protected routes using `JWT_SECRET`.
 
 ### Step 5: Set Up CI/CD with GitHub Actions
 

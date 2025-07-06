@@ -1,6 +1,7 @@
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import express from 'express';
+import { JwtService } from "@nestjs/jwt";
 import request from 'supertest';
 
 import { AppModule } from '../../../api-gateway/src/app/app.module';
@@ -43,5 +44,22 @@ describe('GET /api', () => {
 describe('Dynamic service discovery', () => {
   it('reads SERVICE_ROUTES environment variable', () => {
     expect(process.env.SERVICE_ROUTES).toContain('stub=');
+  });
+});
+
+describe('JWT middleware', () => {
+  it('rejects requests missing token', async () => {
+    const res = await request(app.getHttpServer()).get('/api/stub/test');
+    expect(res.status).toBe(401);
+  });
+
+  it('allows requests with valid token', async () => {
+    const jwt = new JwtService();
+    const token = jwt.sign({ sub: 1 }, { secret: 'secret' });
+    const res = await request(app.getHttpServer())
+      .get('/api/stub/test')
+      .set('Authorization', `Bearer ${token}`);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ ok: true });
   });
 });

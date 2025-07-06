@@ -6,7 +6,6 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 
 | Task ID      | Description                                               | Priority | Assigned To |
 | :----------- | :-------------------------------------------------------- | :------- | :---------- |
-| **GW-003**   | Implement JWT validation middleware                       | High     | codex       |
 | **FE-001**   | Scaffold new `frontend` application using React and Vite  | High     | copilot     |
 | **FE-002**   | Implement basic routing with React Router                 | Medium   | copilot     |
 | **FE-003**   | Create a global state management solution (Redux Toolkit) | Medium   | copilot     |
@@ -38,3 +37,4 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 | **SEC-001** | Add security middleware (helmet, rate limiting) to auth-service | High | codex | `2025-07-06-SEC-001-SecurityMiddleware.md` |
 | **GW-001** | Scaffold new `api-gateway` using NestJS | High | codex | `2025-07-06-GW-001-ApiGatewayScaffold.md` |
 | **GW-002** | Implement dynamic service discovery | High | codex | `2025-07-06-GW-002-DynamicServiceDiscovery.md` |
+| **GW-003** | Implement JWT validation middleware | High | codex | `2025-07-06-GW-003-JwtValidationMiddleware.md` |
