@@ -1,13 +1,14 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
 import { Test } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { JwtModule } from '@nestjs/jwt';
+import helmet from 'helmet';
 import request from 'supertest';
 
-import { AuthController } from '../../../auth-service/src/app/auth.controller';
-import { AuthService } from '../../../auth-service/src/app/auth.service';
 import { AppController } from '../../../auth-service/src/app/app.controller';
 import { AppService } from '../../../auth-service/src/app/app.service';
+import { AuthController } from '../../../auth-service/src/app/auth.controller';
+import { AuthService } from '../../../auth-service/src/app/auth.service';
 import { User } from '../../../auth-service/src/app/user.entity';
 
 describe('AuthService integration', () => {
@@ -37,6 +38,7 @@ describe('AuthService integration', () => {
 
     app = moduleRef.createNestApplication();
     app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+    app.use(helmet());
     await app.init();
   });
 
@@ -85,5 +87,12 @@ describe('AuthService integration', () => {
 
     expect(res.body.tokens.accessToken).toBeDefined();
     expect(res.body.tokens.refreshToken).toBeDefined();
+  });
+
+  it('sets security headers', async () => {
+    const res = await request(app.getHttpServer())
+      .get('/auth/login')
+      .expect(404);
+    expect(res.headers['x-dns-prefetch-control']).toBe('off');
   });
 });
