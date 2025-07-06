@@ -1,5 +1,10 @@
 version: '3.8'
 
+# This file defines the services required to run AdCraft locally.
+# Only the frontend and authentication service exist today. When new
+# backend services are implemented, copy the pattern used for
+# `auth-service` to add them here and update `frontend`'s API_URL if needed.
+
 services:
   # Frontend service
   frontend:
@@ -13,36 +18,35 @@ services:
       - node_modules_frontend:/app/node_modules
     environment:
       - NODE_ENV=development
-      - API_URL=http://api-gateway:3001
-    depends_on:
-      - api-gateway
+      - API_URL=http://auth-service:3002
     networks:
       - adcraft-network
 
   # API Gateway
-  api-gateway:
-    build:
-      context: .
-      dockerfile: Dockerfile.backend
-    ports:
-      - '3001:3001'
-    volumes:
-      - ./src/backend/services/api-gateway:/app/src/backend/services/api-gateway
-      - node_modules_backend:/app/node_modules
-    environment:
-      - NODE_ENV=development
-      - PORT=3001
-      - AUTH_SERVICE_URL=http://auth-service:3002
-      - ASSET_SERVICE_URL=http://asset-service:3003
-      - TEMPLATE_SERVICE_URL=http://template-service:3004
-      - AD_SERVICE_URL=http://ad-service:3005
-    depends_on:
-      - auth-service
-      - asset-service
-      - template-service
-      - ad-service
-    networks:
-      - adcraft-network
+  # api-gateway:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.backend
+  #   ports:
+  #     - '3001:3001'
+  #   volumes:
+  #     - ./src/backend/services/api-gateway:/app/src/backend/services/api-gateway
+  #     - node_modules_backend:/app/node_modules
+  #   environment:
+  #     - NODE_ENV=development
+  #     - PORT=3001
+  #     - AUTH_SERVICE_URL=http://auth-service:3002
+  #     - ASSET_SERVICE_URL=http://asset-service:3003
+  #     - TEMPLATE_SERVICE_URL=http://template-service:3004
+  #     - AD_SERVICE_URL=http://ad-service:3005
+  #   depends_on:
+  #     - auth-service
+  #     - asset-service
+  #     - template-service
+  #     - ad-service
+  #   networks:
+  #     - adcraft-network
+  # TODO: Uncomment and configure this service when the API gateway is implemented.
 
   # Auth Service
   auth-service:
@@ -71,70 +75,73 @@ services:
       - adcraft-network
 
   # Asset Service
-  asset-service:
-    build:
-      context: .
-      dockerfile: Dockerfile.backend
-    ports:
-      - '3003:3003'
-    volumes:
-      - ./src/backend/services/asset-service:/app/src/backend/services/asset-service
-      - node_modules_backend:/app/node_modules
-      - asset-uploads:/app/uploads
-    environment:
-      - NODE_ENV=development
-      - PORT=3003
-      - MONGODB_URI=mongodb://mongodb:27017/adcraft-assets
-      - AWS_REGION=us-east-1
-      - AWS_S3_BUCKET=adcraft-local-assets
-      - LOCALSTACK_ENDPOINT=http://localstack:4566
-    depends_on:
-      - mongodb
-      - localstack
-    networks:
-      - adcraft-network
+  # asset-service:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.backend
+  #   ports:
+  #     - '3003:3003'
+  #   volumes:
+  #     - ./src/backend/services/asset-service:/app/src/backend/services/asset-service
+  #     - node_modules_backend:/app/node_modules
+  #     - asset-uploads:/app/uploads
+  #   environment:
+  #     - NODE_ENV=development
+  #     - PORT=3003
+  #     - MONGODB_URI=mongodb://mongodb:27017/adcraft-assets
+  #     - AWS_REGION=us-east-1
+  #     - AWS_S3_BUCKET=adcraft-local-assets
+  #     - LOCALSTACK_ENDPOINT=http://localstack:4566
+  #   depends_on:
+  #     - mongodb
+  #     - localstack
+  #   networks:
+  #     - adcraft-network
+  # TODO: Uncomment and configure when the asset service is available.
 
   # Template Service
-  template-service:
-    build:
-      context: .
-      dockerfile: Dockerfile.backend
-    ports:
-      - '3004:3004'
-    volumes:
-      - ./src/backend/services/template-service:/app/src/backend/services/template-service
-      - node_modules_backend:/app/node_modules
-    environment:
-      - NODE_ENV=development
-      - PORT=3004
-      - MONGODB_URI=mongodb://mongodb:27017/adcraft-templates
-    depends_on:
-      - mongodb
-    networks:
-      - adcraft-network
+  # template-service:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.backend
+  #   ports:
+  #     - '3004:3004'
+  #   volumes:
+  #     - ./src/backend/services/template-service:/app/src/backend/services/template-service
+  #     - node_modules_backend:/app/node_modules
+  #   environment:
+  #     - NODE_ENV=development
+  #     - PORT=3004
+  #     - MONGODB_URI=mongodb://mongodb:27017/adcraft-templates
+  #   depends_on:
+  #     - mongodb
+  #   networks:
+  #     - adcraft-network
+  # TODO: Uncomment and configure when the template service is available.
 
   # Ad Creation Service
-  ad-service:
-    build:
-      context: .
-      dockerfile: Dockerfile.backend
-    ports:
-      - '3005:3005'
-    volumes:
-      - ./src/backend/services/ad-service:/app/src/backend/services/ad-service
-      - node_modules_backend:/app/node_modules
-    environment:
-      - NODE_ENV=development
-      - PORT=3005
-      - MONGODB_URI=mongodb://mongodb:27017/adcraft-ads
-      - ASSET_SERVICE_URL=http://asset-service:3003
-      - TEMPLATE_SERVICE_URL=http://template-service:3004
-    depends_on:
-      - mongodb
-      - asset-service
-      - template-service
-    networks:
-      - adcraft-network
+  # ad-service:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.backend
+  #   ports:
+  #     - '3005:3005'
+  #   volumes:
+  #     - ./src/backend/services/ad-service:/app/src/backend/services/ad-service
+  #     - node_modules_backend:/app/node_modules
+  #   environment:
+  #     - NODE_ENV=development
+  #     - PORT=3005
+  #     - MONGODB_URI=mongodb://mongodb:27017/adcraft-ads
+  #     - ASSET_SERVICE_URL=http://asset-service:3003
+  #     - TEMPLATE_SERVICE_URL=http://template-service:3004
+  #   depends_on:
+  #     - mongodb
+  #     - asset-service
+  #     - template-service
+  #   networks:
+  #     - adcraft-network
+  # TODO: Uncomment and configure when the ad service is available.
 
   # MongoDB (still needed for other services)
   mongodb:
@@ -171,18 +178,19 @@ services:
       - adcraft-network
 
   # LocalStack for AWS services emulation
-  localstack:
-    image: localstack/localstack
-    ports:
-      - '4566:4566'
-    environment:
-      - SERVICES=s3,lambda
-      - DEBUG=1
-      - DATA_DIR=/tmp/localstack/data
-    volumes:
-      - localstack_data:/tmp/localstack
-    networks:
-      - adcraft-network
+  # localstack:
+  #   image: localstack/localstack
+  #   ports:
+  #     - '4566:4566'
+  #   environment:
+  #     - SERVICES=s3,lambda
+  #     - DEBUG=1
+  #     - DATA_DIR=/tmp/localstack/data
+  #   volumes:
+  #     - localstack_data:/tmp/localstack
+  #   networks:
+  #     - adcraft-network
+  # TODO: Uncomment when services requiring AWS emulation are implemented.
 
 networks:
   adcraft-network:
@@ -193,6 +201,6 @@ volumes:
   node_modules_backend:
   mongodb_data:
   redis_data:
-  localstack_data:
-  asset-uploads:
+  # localstack_data:
+  # asset-uploads:
   postgres_data:
