@@ -1,4 +1,4 @@
-import reducer, { setUser, clearUser, setLoading, setError, clearError } from './authSlice';
+import reducer, { login, clearError, User, Tokens } from './authSlice';
 
 describe('authSlice reducer', () => {
   it('should handle initial state', () => {
@@ -10,21 +10,30 @@ describe('authSlice reducer', () => {
     });
   });
 
-  it('should set and clear user', () => {
-    let state = reducer(undefined, setUser('test'));
-    expect(state.user).toBe('test');
-    state = reducer(state, clearUser());
-    expect(state.user).toBeNull();
-  });
-
-  it('should handle loading', () => {
-    const state = reducer(undefined, setLoading(true));
+  it('should handle login lifecycle', () => {
+    let state = reducer(undefined, login.pending('', { email: 'a', password: 'b' }));
     expect(state.loading).toBe(true);
+    const payload = {
+      user: {
+        id: '1',
+        email: 'a',
+        name: 'A',
+        role: 'admin',
+        teams: [],
+        preferences: { theme: 'light', notifications: true },
+        createdAt: new Date(),
+      } as User,
+      tokens: { accessToken: 'x', refreshToken: 'y' } as Tokens,
+    };
+    state = reducer(state, login.fulfilled(payload, '', { email: 'a', password: 'b' }));
+    expect(state.loading).toBe(false);
+    expect(state.user).toEqual(payload.user);
+    expect(state.tokens).toEqual(payload.tokens);
   });
 
-  it('should set and clear error', () => {
-    let state = reducer(undefined, setError('oops'));
-    expect(state.error).toBe('oops');
+  it('should clear error', () => {
+    let state = reducer(undefined, login.rejected(new Error(), '', { email: 'a', password: 'b' }));
+    expect(state.error).toBe('Login failed');
     state = reducer(state, clearError());
     expect(state.error).toBeNull();
   });

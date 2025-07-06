@@ -971,9 +971,9 @@ frontend/
 
 - [ ] User schema defined
 - [ ] Authentication service implemented
-- [ ] User registration flow
-- [ ] Login and token management
-- [ ] Frontend authentication components
+- [x] User registration flow
+- [x] Login and token management
+- [x] Frontend authentication components
 
 #### Week 4 Checkpoint: API Gateway & Service Foundation
 
