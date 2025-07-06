@@ -180,6 +180,8 @@ AWS_S3_BUCKET=adcraft-assets
 PORT=3000
 NODE_ENV=development
 DB_SYNC=false
+RATE_LIMIT_WINDOW_MS=60000
+RATE_LIMIT_MAX=100
 EOL
 ```
 
@@ -190,6 +192,9 @@ EOL
 > **Note**
 > The auth service reads configuration from the path specified in `AUTH_ENV_PATH`.
 > If this variable is not set, it defaults to `.env`.
+> `RATE_LIMIT_WINDOW_MS` and `RATE_LIMIT_MAX` control request throttling. They default to `60000` (1 minute) and `100` requests.
+> The API gateway reads service proxy mappings from `SERVICE_ROUTES`.
+> Example: `SERVICE_ROUTES="auth=http://localhost:3001"` will proxy requests starting with `/auth` to that URL. The gateway's `.env` path can be set with `GATEWAY_ENV_PATH`.
 
 ### Step 5: Set Up CI/CD with GitHub Actions
 

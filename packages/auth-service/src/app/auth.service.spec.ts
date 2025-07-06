@@ -1,8 +1,8 @@
+import { JwtService } from '@nestjs/jwt';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import * as bcrypt from 'bcryptjs';
 import { Repository } from 'typeorm';
-import { JwtService } from '@nestjs/jwt';
 
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
