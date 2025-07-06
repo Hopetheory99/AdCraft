@@ -8,6 +8,7 @@ The following documents provide a complete overview of the AdCraft project:
 
 - **[Comprehensive Project Plan](./project_files/AdCraft%20-%20Comprehensive%20Project%20Plan.md)**: The main project plan, including a detailed roadmap, sprint breakdowns, and technical implementation details.
 - **[Technical Architecture](./project_files/AdCraft%20-%20Technical%20Architecture.md)**: A detailed overview of the technical architecture, including system components, data flows, and infrastructure design.
+- **Frontend**: Located in `packages/frontend/frontend`, built with React and Vite. Routing is handled by React Router and global state by Redux Toolkit. Authentication is managed with async Redux thunks backed by an `AuthService` and Axios interceptors. Login and registration forms are provided under the auth pages.
 - **[Development Roadmap](./project_files/AdCraft%20-%20Development%20Roadmap.md)**: A high-level roadmap of the project's development timeline.
 - **[Implementation Guide](./project_files/AdCraft%20-%20Implementation%20Guide.md)**: A guide for setting up and running the AdCraft project.
 - **[Testing Strategy](./project_files/AdCraft%20-%20Testing%20Strategy.md)**: The project's testing strategy, including unit, integration, and end-to-end testing.
