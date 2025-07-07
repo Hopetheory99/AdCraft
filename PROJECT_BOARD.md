@@ -11,15 +11,12 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 | **FE-002**   | Implement basic routing with React Router                 | Medium   | copilot     |
 | **FE-003**   | Create a global state management solution (Redux Toolkit) | Medium   | copilot     |
 
-|
-
 ## In Progress
-
 | Task ID | Description | Priority | Assigned To |
 | :------ | :---------- | :------- | :---------- |
 
-## Done
 
+## Done
 | Task ID      | Description                                                 | Priority | Assigned To | Logbook Entry                                |
 | :----------- | :---------------------------------------------------------- | :------- | :---------- | :------------------------------------------- |
 | **DOCS-001** | Update `README.md` with new project setup instructions      | Medium   | Cline       | `2025-07-03-DOCS-001-ReadmeUpdate.md`        |
@@ -38,3 +35,5 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 | **SEC-001** | Add security middleware (helmet, rate limiting) to auth-service | High | codex | `2025-07-06-SEC-001-SecurityMiddleware.md` |
 | **GW-001** | Scaffold new `api-gateway` using NestJS | High | codex | `2025-07-06-GW-001-ApiGatewayScaffold.md` |
 | **GW-002** | Implement dynamic service discovery | High | codex | `2025-07-06-GW-002-DynamicServiceDiscovery.md` |
+| **MAINT-001** | Repository cleanup and branch verification | Low | codex | `2025-07-06-MAINT-001-CodebaseCleanup.md` |
+| **FE-004** | Frontend UI revamp with Material UI | Medium | codex | `2025-07-07-FE-004-FrontendUIRevamp.md` |
