@@ -15,3 +15,6 @@ The following documents provide a complete overview of the AdCraft project:
 - **[Code Audit Report](./project_files/AdCraft-Code-Audit-Report.md)**: A report on the quality and security of the AdCraft codebase.
 - **[Project Execution Guide](./project_files/AdCraft-Project-Execution-Guide.md)**: A guide for the development team on how to execute the project, including a task board and guidelines for AI agents.
 - **[Documentation Index](./project_files/AdCraft-Documentation-Index.md)**: An index of all project documentation.
+
+## Maintainers
+See the root `MAINTAINERS.md` file for current maintainers. Codex acts as the Head Admin for the project.

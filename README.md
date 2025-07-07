@@ -4,6 +4,7 @@
 AdCraft is a modern ad creation platform built with React, Redux Toolkit, TypeScript, Material-UI, and Nx monorepo architecture. It features:
 - Modular frontend (React) and backend (NestJS microservices, with PostgreSQL for authentication)
 - State management with Redux Toolkit
+- Responsive UI built with Material UI
 - Asset, template, and project management
 - Ad editor with Fabric.js
 
@@ -30,6 +31,13 @@ AdCraft/
 ```
 
 ## Getting Started
+### Environment Setup
+Copy `.env.example` to `.env` and update the values for your local environment. These variables provide database credentials, JWT secrets, and port settings for the services defined in `docker-compose.yml`.
+
+```bash
+cp .env.example .env
+```
+
 1. Install dependencies:
    ```bash
    npm install
@@ -41,6 +49,10 @@ AdCraft/
 3. Run the backend:
    ```bash
    nx serve auth-service
+   ```
+4. Or start all services with Docker Compose:
+   ```bash
+   docker-compose up
    ```
 
 ## CI/CD Configuration
@@ -66,3 +78,6 @@ Redux slices are located in `src/app/slices/`. The store is configured in `src/a
 
 ## License
 MIT
+
+## Maintainers
+The project is currently overseen by Codex (Head Admin) and Hopetheory99 (Project Owner). See `MAINTAINERS.md` for details.

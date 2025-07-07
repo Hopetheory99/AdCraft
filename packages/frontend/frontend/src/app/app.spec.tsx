@@ -17,7 +17,7 @@ describe('App', () => {
     expect(baseElement).toBeTruthy();
   });
 
-  it('should have a greeting as the title', () => {
+  it('should display the nav title', () => {
     const { getByText } = render(
       <Provider store={store}>
         <BrowserRouter>
@@ -25,7 +25,7 @@ describe('App', () => {
         </BrowserRouter>
       </Provider>,
     );
-    expect(getByText(/Welcome frontend-frontend/gi)).toBeTruthy();
+    expect(getByText('AdCraft')).toBeTruthy();
   });
 
 });
