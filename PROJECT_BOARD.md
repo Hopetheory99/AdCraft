@@ -6,10 +6,6 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 
 | Task ID      | Description                                               | Priority | Assigned To |
 | :----------- | :-------------------------------------------------------- | :------- | :---------- |
-| **GW-003**   | Implement JWT validation middleware                       | High     | codex       |
-| **FE-001**   | Scaffold new `frontend` application using React and Vite  | High     | copilot     |
-| **FE-002**   | Implement basic routing with React Router                 | Medium   | copilot     |
-| **FE-003**   | Create a global state management solution (Redux Toolkit) | Medium   | copilot     |
 
 ## In Progress
 | Task ID | Description | Priority | Assigned To |
@@ -36,4 +32,10 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 | **GW-001** | Scaffold new `api-gateway` using NestJS | High | codex | `2025-07-06-GW-001-ApiGatewayScaffold.md` |
 | **GW-002** | Implement dynamic service discovery | High | codex | `2025-07-06-GW-002-DynamicServiceDiscovery.md` |
 | **MAINT-001** | Repository cleanup and branch verification | Low | codex | `2025-07-06-MAINT-001-CodebaseCleanup.md` |
+| **FE-001** | Scaffold new `frontend` application using React and Vite | High | codex | `2025-07-09-FE-001-FrontendScaffold.md` |
+| **FE-002** | Implement basic routing with React Router | Medium | codex | `2025-07-09-FE-002-BasicRouting.md` |
+| **FE-003** | Create a global state management solution (Redux Toolkit) | Medium | codex | `2025-07-09-FE-003-ReduxToolkitSetup.md` |
 | **FE-004** | Frontend UI revamp with Material UI | Medium | codex | `2025-07-07-FE-004-FrontendUIRevamp.md` |
+| **DOCS-004** | Add July 2025 code audit summary | Medium | codex | `2025-07-08-DOCS-004-CodeAuditSummary.md` |
+| **GW-003** | Implement JWT validation middleware | High | codex | `2025-07-08-GW-003-JwtValidationMiddleware.md` |
+| **F-005** | Set up Docker environment with docker-compose | High | codex | `2025-07-10-F-005-DockerEnvironment.md` |

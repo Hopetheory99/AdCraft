@@ -78,14 +78,26 @@ export class AuthService {
 
   private generateTokens(user: User) {
     const payload = { sub: user.id, email: user.email, role: user.role };
+    const accessSecret = process.env.JWT_SECRET;
+    const refreshSecret = process.env.JWT_REFRESH_SECRET || accessSecret;
+
+    if (!accessSecret) {
+      throw new Error('JWT_SECRET is not configured');
+    }
+
+    if (!refreshSecret) {
+      throw new Error('JWT_REFRESH_SECRET is not configured');
+    }
+
     return {
       accessToken: this.jwtService.sign(payload, {
-        secret: process.env.JWT_SECRET || 'secret',
+        secret: accessSecret,
         expiresIn: process.env.JWT_EXPIRATION || '15m',
       }),
       refreshToken: this.jwtService.sign(payload, {
-        secret: process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET || 'secret',
-        expiresIn: process.env.JWT_REFRESH_EXPIRATION || process.env.REFRESH_TOKEN_EXPIRATION || '7d',
+        secret: refreshSecret,
+        expiresIn:
+          process.env.JWT_REFRESH_EXPIRATION || process.env.REFRESH_TOKEN_EXPIRATION || '7d',
       }),
     };
   }
