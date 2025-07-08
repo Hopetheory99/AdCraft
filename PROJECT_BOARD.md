@@ -39,3 +39,10 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 | **DOCS-004** | Add July 2025 code audit summary | Medium | codex | `2025-07-08-DOCS-004-CodeAuditSummary.md` |
 | **GW-003** | Implement JWT validation middleware | High | codex | `2025-07-08-GW-003-JwtValidationMiddleware.md` |
 | **F-005** | Set up Docker environment with docker-compose | High | codex | `2025-07-10-F-005-DockerEnvironment.md` |
+| **DOCS-006** | Refine PERFECTION_PLAN guidelines and tasks | Medium | codex | `2025-07-11-DOCS-006-PerfectionPlanPolish.md` |
+| **F-006** | Configure ESLint and Prettier | Medium | codex | `2025-07-12-F-006-ESLintPrettierHook.md` |
+| **F-007** | Set up GitHub Actions for CI/CD | High | codex | `2025-07-13-F-007-GitHubActionsCI.md` |
+| **F-008** | Configure environment variables and secrets management | High | codex | `2025-07-14-F-008-EnvSecretsManagement.md` |
+| **F-009** | Create shared types library | Medium | codex | `2025-07-14-F-009-SharedTypesLib.md` |
+| **F-010** | Document development environment setup | Medium | codex | `2025-07-14-F-010-DevEnvDocs.md` |
+| **DOCS-008** | Record codebase testing results and update docs | Medium | codex | `2025-07-15-DOCS-008-CodebaseTesting.md` |

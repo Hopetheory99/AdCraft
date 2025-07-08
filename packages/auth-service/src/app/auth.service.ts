@@ -7,6 +7,7 @@ import { Repository } from 'typeorm';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { User } from './user.entity';
+import { PublicUser } from '@adcraft/shared-types';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +17,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async register(dto: RegisterDto): Promise<Omit<User, 'password_hash'>> {
+  async register(dto: RegisterDto): Promise<PublicUser> {
     const existing = await this.userRepo.findOne({ where: { email: dto.email } });
     if (existing) {
       throw new BadRequestException('Email already registered');
@@ -49,7 +50,7 @@ export class AuthService {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password_hash, refresh_token, ...usr } = user;
-    return { user: usr, tokens };
+    return { user: usr as PublicUser, tokens };
   }
 
   async refresh(token: string) {
@@ -73,7 +74,7 @@ export class AuthService {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password_hash, refresh_token, ...usr } = user;
-    return { user: usr, tokens };
+    return { user: usr as PublicUser, tokens };
   }
 
   private generateTokens(user: User) {
