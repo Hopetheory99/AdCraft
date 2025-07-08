@@ -24,31 +24,28 @@ services:
     networks:
       - adcraft-network
 
-  # API Gateway
-  # api-gateway:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.backend
-  #   ports:
-  #     - '3001:3001'
-  #   volumes:
-  #     - ./src/backend/services/api-gateway:/app/src/backend/services/api-gateway
-  #     - node_modules_backend:/app/node_modules
-  #   environment:
-  #     - NODE_ENV=development
-  #     - PORT=3001
-  #     - AUTH_SERVICE_URL=http://auth-service:3002
-  #     - ASSET_SERVICE_URL=http://asset-service:3003
-  #     - TEMPLATE_SERVICE_URL=http://template-service:3004
-  #     - AD_SERVICE_URL=http://ad-service:3005
-  #   depends_on:
-  #     - auth-service
-  #     - asset-service
-  #     - template-service
-  #     - ad-service
-  #   networks:
-  #     - adcraft-network
-  # TODO: Uncomment and configure this service when the API gateway is implemented.
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "${PORT_GATEWAY:-3001}:3001"
+    volumes:
+      - ./packages/api-gateway:/app/packages/api-gateway
+      - node_modules_backend:/app/node_modules
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - PORT=${PORT_GATEWAY:-3001}
+      - AUTH_SERVICE_URL=http://auth-service:3002
+      - ASSET_SERVICE_URL=http://asset-service:3003
+      - TEMPLATE_SERVICE_URL=http://template-service:3004
+      - AD_SERVICE_URL=http://ad-service:3005
+    depends_on:
+      - auth-service
+    networks:
+      - adcraft-network
 
   # Auth Service
   auth-service:
@@ -56,9 +53,9 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     ports:
-      - '3002:3002'
+      - "${PORT_AUTH:-3002}:3002"
     volumes:
-      - ./src/backend/services/auth-service:/app/src/backend/services/auth-service
+      - ./packages/auth-service:/app/packages/auth-service
       - node_modules_backend:/app/node_modules
     env_file:
       - .env

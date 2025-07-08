@@ -196,6 +196,10 @@ EOL
 > The API gateway reads service proxy mappings from `SERVICE_ROUTES`.
 > Example: `SERVICE_ROUTES="auth=http://localhost:3001"` will proxy requests starting with `/auth` to that URL. The gateway's `.env` path can be set with `GATEWAY_ENV_PATH`.
 
+After implementing the API gateway, enable the `api-gateway` service in
+`docker-compose.yml` and expose it on port `3001` (configurable via
+`PORT_GATEWAY`).
+
 ### Step 5: Set Up CI/CD with GitHub Actions
 
 Create a basic GitHub Actions workflow for CI/CD:
@@ -628,6 +632,11 @@ import { ProxyRoutesModule } from './proxy-routes/proxy-routes.module';
 })
 export class AppModule {}
 ```
+
+#### Step 3: Add JWT Validation Middleware
+
+Add a middleware that verifies incoming `Authorization` headers using `@nestjs/jwt`.
+Register it in `AppModule` so that all routes except `auth/*` require a valid token.
 
 ### Frontend Setup
 

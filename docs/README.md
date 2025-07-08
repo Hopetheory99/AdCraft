@@ -13,6 +13,7 @@ The following documents provide a complete overview of the AdCraft project:
 - **[Testing Strategy](./project_files/AdCraft%20-%20Testing%20Strategy.md)**: The project's testing strategy, including unit, integration, and end-to-end testing.
 - **[User Guide](./project_files/AdCraft%20-%20User%20Guide.md)**: A guide for end-users of the AdCraft platform.
 - **[Code Audit Report](./project_files/AdCraft-Code-Audit-Report.md)**: A report on the quality and security of the AdCraft codebase.
+- **[July 2025 Codebase Audit](./project_files/AdCraft-Codebase-Audit-2025-07.md)**: Latest audit summary with scores and recommendations.
 - **[Project Execution Guide](./project_files/AdCraft-Project-Execution-Guide.md)**: A guide for the development team on how to execute the project, including a task board and guidelines for AI agents.
 - **[Documentation Index](./project_files/AdCraft-Documentation-Index.md)**: An index of all project documentation.
 
