@@ -34,13 +34,25 @@ AdCraft/
 ### Environment Setup
 Copy `.env.example` to `.env` and update the values for your local environment. These variables provide database credentials, JWT secrets, and port settings for the services defined in `docker-compose.yml`.
 
+Full setup instructions are available in [Development Environment Setup](docs/project_files/AdCraft%20-%20Development%20Environment%20Setup.md).
+
 ```bash
 cp .env.example .env
+```
+
+Install the Nx CLI globally if it's not already available:
+
+```bash
+npm install -g nx
 ```
 
 1. Install dependencies:
    ```bash
    npm install
+   ```
+   If you encounter peer dependency conflicts, run:
+   ```bash
+   npm install --legacy-peer-deps
    ```
 2. Run the frontend:
    ```bash
