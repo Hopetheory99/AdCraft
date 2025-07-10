@@ -123,7 +123,7 @@ These benchmarks define what "perfect" looks like. Meeting them in full will yie
 | Performance & Scalability | CI-001, CI-002, F-005 |
 | Security Best Practices | SEC-001, AUTH-006 |
 | Test Coverage & Reliability | AUTH-006, CI-002 |
-| Architecture & Modularity | F-009, GW-001, GW-002 |
+| Architecture & Modularity | F-009, GW-001, GW-002, F-011 |
 | Standards Compliance | DOCS-004 |
 | Team Collaboration | PROJ-003, CI-002 |
 | Business Alignment | PROJ-001 |
@@ -132,3 +132,17 @@ These benchmarks define what "perfect" looks like. Meeting them in full will yie
 ## Outstanding Tasks
 
 All foundation tasks from the initial roadmap are now complete. New tasks will be tracked on `PROJECT_BOARD.md` as the project evolves. Revisit this plan after each quarterly audit to add any newly discovered work items.
+
+## Audit Follow-Up Tasks (July 2025)
+
+The July 2025 code audit highlighted several areas for improvement. The following tasks have been added to ensure the project reaches the next level of quality and security:
+
+| Task ID | Description | Dimension |
+| ------- | ----------- | --------- |
+| **SEC-002** | Remove hardcoded secrets and enforce secret management across all environments | Security Best Practices |
+| **F-011** | Create service-specific Dockerfiles with multi-stage builds | Performance & Scalability |
+| **F-012** | Implement global NestJS exception filter for standardized error handling | Code Quality & Structure |
+| **DOCS-009** | Document all public API endpoints with TSDoc | Readability & Maintainability |
+| **CI-003** | Integrate Snyk scanning into the CI pipeline | Security Best Practices |
+
+These tasks are now listed on the project board and will be tracked through the standard logbook process.
