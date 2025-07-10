@@ -7,11 +7,13 @@ import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
+import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.useGlobalFilters(new HttpExceptionFilter());
   app.use(helmet());
   app.use(
     rateLimit({

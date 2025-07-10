@@ -14,6 +14,8 @@ describe('AuthService', () => {
   let jwt: jest.Mocked<JwtService>;
 
   beforeEach(async () => {
+    process.env.JWT_SECRET = 'secret';
+    process.env.JWT_REFRESH_SECRET = 'secret';
     repo = {
       findOne: jest.fn(),
       create: jest.fn(u => u as User),
@@ -33,6 +35,11 @@ describe('AuthService', () => {
     }).compile();
 
     service = module.get(AuthService);
+  });
+
+  afterEach(() => {
+    delete process.env.JWT_SECRET;
+    delete process.env.JWT_REFRESH_SECRET;
   });
 
   it('hashes password before saving', async () => {
