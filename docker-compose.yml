@@ -27,7 +27,7 @@ services:
   api-gateway:
     build:
       context: .
-      dockerfile: Dockerfile.backend
+      dockerfile: packages/api-gateway/Dockerfile
     ports:
       - "${PORT_GATEWAY:-3001}:3001"
     volumes:
@@ -51,7 +51,7 @@ services:
   auth-service:
     build:
       context: .
-      dockerfile: Dockerfile.backend
+      dockerfile: packages/auth-service/Dockerfile
     ports:
       - "${PORT_AUTH:-3002}:3002"
     volumes:

@@ -4,10 +4,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcryptjs';
 import { Repository } from 'typeorm';
 
+import { PublicUser } from '@adcraft/shared-types';
+
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { User } from './user.entity';
-import { PublicUser } from '@adcraft/shared-types';
 
 @Injectable()
 export class AuthService {
@@ -54,10 +55,14 @@ export class AuthService {
   }
 
   async refresh(token: string) {
-    let payload: any;
+    let payload: { sub: number };
     try {
+      const secret = process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET;
+      if (!secret) {
+        throw new Error('JWT_REFRESH_SECRET is not configured');
+      }
       payload = await this.jwtService.verifyAsync(token, {
-        secret: process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET || 'secret',
+        secret,
       });
     } catch {
       throw new UnauthorizedException('Invalid refresh token');

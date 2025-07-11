@@ -5,6 +5,7 @@ import request from 'supertest';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
+import { HttpExceptionFilter } from '../common/filters/http-exception.filter';
 
 describe('AuthController', () => {
   let app: INestApplication;
@@ -18,6 +19,7 @@ describe('AuthController', () => {
 
     app = moduleRef.createNestApplication();
     app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+    app.useGlobalFilters(new HttpExceptionFilter());
     await app.init();
   });
 
@@ -43,11 +45,20 @@ describe('AuthController', () => {
     const dto: RegisterDto = { email: 'test@example.com', password: 'password123' };
     service.register.mockRejectedValue(new BadRequestException('Email already registered'));
 
-    await request(app.getHttpServer())
+    const response = await request(app.getHttpServer())
       .post('/auth/register')
       .send(dto)
       .expect(400);
 
+    expect(response.body).toEqual({
+      statusCode: 400,
+      path: '/auth/register',
+      message: {
+        statusCode: 400,
+        message: 'Email already registered',
+        error: 'Bad Request',
+      },
+    });
     expect(service.register).toHaveBeenCalledWith(dto);
   });
 

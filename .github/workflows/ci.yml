@@ -44,9 +44,29 @@ jobs:
       - name: Run auth-service e2e tests
         run: npx nx run auth-service-e2e:e2e --configuration=ci
 
+  snyk:
+    name: Snyk Vulnerability Scan
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Snyk scan
+        uses: snyk/actions/node@v2
+        with:
+          command: test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
   build:
     name: Build
-    needs: test
+    needs: [test, snyk]
     runs-on: ubuntu-latest
     env:
       NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
