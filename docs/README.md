@@ -14,7 +14,7 @@ The following documents provide a complete overview of the AdCraft project:
 - **[User Guide](./project_files/AdCraft%20-%20User%20Guide.md)**: A guide for end-users of the AdCraft platform.
 - **[Code Audit Report](./project_files/AdCraft-Code-Audit-Report.md)**: A report on the quality and security of the AdCraft codebase.
 - **[July 2025 Codebase Audit](./project_files/AdCraft-Codebase-Audit-2025-07.md)**: Latest audit summary with scores and recommendations.
-- **[July 11, 2025 Code Audit](./project_files/AdCraft-Code-Audit-2025-07-11.md)**: Detailed findings from the most recent full code audit.
+- **[July 11, 2025 Code Audit](./project_files/AdCraft-Code-Audit-2025-07-11.md)**: Follow-up audit confirming a perfect 10/10 score across all categories.
 - **[Project Execution Guide](./project_files/AdCraft-Project-Execution-Guide.md)**: A guide for the development team on how to execute the project, including a task board and guidelines for AI agents.
 - **[Documentation Index](./project_files/AdCraft-Documentation-Index.md)**: An index of all project documentation.
 
