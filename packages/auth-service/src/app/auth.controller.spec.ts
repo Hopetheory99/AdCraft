@@ -1,11 +1,12 @@
 import { INestApplication, ValidationPipe, BadRequestException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
-import { HttpExceptionFilter } from '../common/filters/http-exception.filter';
+
 
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
+import { HttpExceptionFilter } from '../common/filters/http-exception.filter';
 
 describe('AuthController', () => {
   let app: INestApplication;

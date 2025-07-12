@@ -41,7 +41,8 @@
     "rxjs": "^7.0.0",
     "styled-components": "5.3.6",
     "tslib": "^2.3.0",
-    "typeorm": "^0.3.25"
+    "typeorm": "^0.3.25",
+    "@aws-sdk/client-secrets-manager": "^3.497.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",

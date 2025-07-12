@@ -4,10 +4,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcryptjs';
 import { Repository } from 'typeorm';
 
+import { PublicUser } from '@adcraft/shared-types';
+
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { User } from './user.entity';
-import { PublicUser } from '@adcraft/shared-types';
 
 @Injectable()
 export class AuthService {
