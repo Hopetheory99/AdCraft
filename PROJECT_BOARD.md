@@ -49,3 +49,4 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 | **F-011**     | Create service-specific Dockerfiles with multi-stage builds     | Medium   | codex       | `2025-07-10-F-011-ServiceDockerfilesCompleted.md` |
 | **F-012**     | Implement global NestJS exception filter                        | Medium   | codex       | `2025-07-10-F-012-ExceptionFilterCompleted.md`    |
 
+| **AUTH-007**  | Disallow `DB_SYNC` in production             | Medium   | codex       | `2025-07-17-AUTH-007-DbSyncProdGuard.md`           |

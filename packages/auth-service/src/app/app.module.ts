@@ -17,16 +17,24 @@ import { User } from './user.entity';
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get<string>('DB_HOST'),
-        port: configService.get<number>('DB_PORT'),
-        username: configService.get<string>('DB_USERNAME'),
-        password: configService.get<string>('DB_PASSWORD'),
-        database: configService.get<string>('DB_DATABASE'),
-        autoLoadEntities: true,
-        synchronize: configService.get<string>('DB_SYNC', 'false').toLowerCase() === 'true', // do not enable in production
-      }),
+      useFactory: (configService: ConfigService) => {
+        const syncFlag =
+          configService.get<string>('DB_SYNC', 'false').toLowerCase() === 'true';
+        const env = configService.get<string>('NODE_ENV');
+        if (syncFlag && env === 'production') {
+          throw new Error('DB_SYNC cannot be enabled in production');
+        }
+        return {
+          type: 'postgres',
+          host: configService.get<string>('DB_HOST'),
+          port: configService.get<number>('DB_PORT'),
+          username: configService.get<string>('DB_USERNAME'),
+          password: configService.get<string>('DB_PASSWORD'),
+          database: configService.get<string>('DB_DATABASE'),
+          autoLoadEntities: true,
+          synchronize: syncFlag,
+        };
+      },
       inject: [ConfigService],
     }),
     JwtModule.register({}),

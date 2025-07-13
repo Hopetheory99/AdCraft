@@ -187,7 +187,8 @@ EOL
 
 > **Warning**
 > Enable `DB_SYNC` only for local development. Schema synchronization can drop
-> or alter tables and should never be used in production.
+> or alter tables and should never be used in production. The auth service will
+> refuse to start when `DB_SYNC` is `true` and `NODE_ENV` is `production`.
 
 > **Note**
 > The auth service reads configuration from the path specified in `AUTH_ENV_PATH`.
