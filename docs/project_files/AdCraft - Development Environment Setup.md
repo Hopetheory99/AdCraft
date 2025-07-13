@@ -39,4 +39,4 @@ This guide explains how to configure a local AdCraft development environment.
 6. **Nx Cloud (optional)**
    Obtain an access token and set `NX_CLOUD_ACCESS_TOKEN` in your `.env` file.
 
-Environment variables such as `JWT_SECRET`, `JWT_REFRESH_SECRET`, and database credentials are loaded from `.env`. The Docker compose file references these variables to configure each container. Keep secrets out of version control and use a secrets manager for production deployments.
+Environment variables such as `JWT_SECRET`, `JWT_REFRESH_SECRET`, and database credentials are loaded from `.env`.  For development you may keep values in this file, but in production the services retrieve secrets from **AWS Secrets Manager**.  Set `AWS_REGION` and `AWS_SECRET_ID` in your environment and Docker Compose will pass them to the containers.  On startup the auth service uses these values to load secrets and populate its configuration automatically.

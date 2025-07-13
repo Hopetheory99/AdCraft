@@ -71,6 +71,8 @@ services:
       - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
       - JWT_EXPIRATION=${JWT_EXPIRATION}
       - REFRESH_TOKEN_EXPIRATION=${REFRESH_TOKEN_EXPIRATION}
+      - AWS_REGION=${AWS_REGION}
+      - AWS_SECRET_ID=${AWS_SECRET_ID}
     depends_on:
       - postgres
     networks:

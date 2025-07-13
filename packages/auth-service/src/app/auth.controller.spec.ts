@@ -2,6 +2,7 @@ import { INestApplication, ValidationPipe, BadRequestException } from '@nestjs/c
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
 
+
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
