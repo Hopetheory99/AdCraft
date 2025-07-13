@@ -127,7 +127,16 @@ These benchmarks define what "perfect" looks like. Meeting them in full will yie
 
 ## Task Mapping
 
-
+| Dimension                     | Related Tasks                |
+| ----------------------------- | ---------------------------- |
+| Readability & Maintainability | DOCS-001, PROJ-003           |
+| Performance & Scalability     | CI-001, CI-002, F-005        |
+| Security Best Practices       | SEC-001, AUTH-006            |
+| Test Coverage & Reliability   | AUTH-006, CI-002             |
+| Architecture & Modularity     | F-009, GW-001, GW-002, F-011 |
+| Standards Compliance          | DOCS-004                     |
+| Team Collaboration            | PROJ-003, CI-002             |
+| Business Alignment            | PROJ-001                     |
 
 ## Outstanding Tasks
 
@@ -137,4 +146,28 @@ All foundation tasks from the initial roadmap are now complete. New tasks will b
 
 The July 2025 code audit highlighted several areas for improvement. The following tasks have been added to ensure the project reaches the next level of quality and security:
 
+| Task ID      | Description                                         | Dimension                     |
+| ------------ | --------------------------------------------------- | ----------------------------- |
+| **SEC-002**  | Remove hardcoded secrets and enforce secret management across all environments | Security Best Practices       |
+| **F-011**    | Create service-specific Dockerfiles with multi-stage builds | Performance & Scalability     |
+| **F-012**    | Implement global NestJS exception filter for standardized error handling | Code Quality & Structure      |
+| **DOCS-009** | Document all public API endpoints with TSDoc        | Readability & Maintainability |
+| **CI-003**   | Integrate Snyk scanning into the CI pipeline        | Security Best Practices       |
 
+These tasks are now listed on the project board and will be tracked through the standard logbook process.
+
+### July 2025 Status
+
+The following audit follow-up tasks have been completed:
+
+- **F-011** - Service-specific Dockerfiles created on 2025-07-10.
+- **F-012** - Global HTTP exception filter implemented on 2025-07-10.
+- **SEC-002** - Secret management cleanup completed on 2025-07-11.
+- **DOCS-009** - All public API endpoints documented with TSDoc on 2025-07-11.
+- **CI-003** - Snyk scanning integrated into the CI pipeline on 2025-07-11.
+
+All July 2025 audit follow-up items are now complete.
+
+### July 2025 Re-Audit Results
+
+After implementing these follow-up tasks, a short re-audit was conducted on 2025-07-12. The codebase scored **10/10** in every dimension, confirming that the current implementation meets all defined success criteria. Future audits will continue to ensure the project maintains this standard.

@@ -50,3 +50,7 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 | **F-012**     | Implement global NestJS exception filter                        | Medium   | codex       | `2025-07-10-F-012-ExceptionFilterCompleted.md`    |
 
 | **AUTH-007**  | Disallow `DB_SYNC` in production             | Medium   | codex       | `2025-07-17-AUTH-007-DbSyncProdGuard.md`           |
+| **SEC-002**  | Enforce secret management and remove hardcoded secrets | Medium | codex | `2025-07-16-SEC-002-ManagedSecrets.md` |
+| **DOCS-009** | Document all public API endpoints with TSDoc | Low | codex | `2025-07-11-DOCS-009-ApiDocsCompleted.md` |
+| **CI-003**   | Integrate Snyk scanning into CI pipeline | Medium | codex | `2025-07-11-CI-003-SnykIntegrationCompleted.md` |
+| **DOCS-010**  | Sync project board with PERFECTION_PLAN tasks | Low | codex | `2025-07-13-DOCS-010-BoardSync.md` |
