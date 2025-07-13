@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcryptjs';
 import { Repository } from 'typeorm';
 
-import { PublicUser } from '@adcraft/shared-types';
+import { UserResponseDto } from './dto/user-response.dto';
 
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
@@ -18,7 +18,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async register(dto: RegisterDto): Promise<PublicUser> {
+  async register(dto: RegisterDto): Promise<UserResponseDto> {
     const existing = await this.userRepo.findOne({ where: { email: dto.email } });
     if (existing) {
       throw new BadRequestException('Email already registered');
@@ -30,9 +30,7 @@ export class AuthService {
     });
 
     const saved = await this.userRepo.save(user);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password_hash, ...result } = saved;
-    return result;
+    return this.toResponseDto(saved);
   }
 
   async login(dto: LoginDto) {
@@ -49,9 +47,7 @@ export class AuthService {
     user.refresh_token = tokens.refreshToken;
     await this.userRepo.save(user);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password_hash, refresh_token, ...usr } = user;
-    return { user: usr as PublicUser, tokens };
+    return { user: this.toResponseDto(user), tokens };
   }
 
   async refresh(token: string) {
@@ -77,9 +73,7 @@ export class AuthService {
     user.refresh_token = tokens.refreshToken;
     await this.userRepo.save(user);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password_hash, refresh_token, ...usr } = user;
-    return { user: usr as PublicUser, tokens };
+    return { user: this.toResponseDto(user), tokens };
   }
 
   private generateTokens(user: User) {
@@ -105,6 +99,14 @@ export class AuthService {
         expiresIn:
           process.env.JWT_REFRESH_EXPIRATION || process.env.REFRESH_TOKEN_EXPIRATION || '7d',
       }),
+    };
+  }
+
+  private toResponseDto(user: User): UserResponseDto {
+    return {
+      id: user.id,
+      email: user.email,
+      role: user.role,
     };
   }
 }

@@ -19,7 +19,7 @@ describe('AuthService', () => {
     repo = {
       findOne: jest.fn(),
       create: jest.fn(u => u as User),
-      save: jest.fn(async u => ({ id: 1, ...u } as User)),
+      save: jest.fn(async u => ({ id: 1, role: 'user', ...u } as User)),
     } as unknown as jest.Mocked<Repository<User>>;
     jwt = {
       sign: jest.fn(() => 'token'),
@@ -48,11 +48,12 @@ describe('AuthService', () => {
       password: 'password123',
     };
 
-    await service.register(dto);
+    const result = await service.register(dto);
 
     const saved = repo.save.mock.calls[0][0] as User;
     expect(saved.password_hash).not.toBe(dto.password);
     expect(await bcrypt.compare(dto.password, saved.password_hash)).toBe(true);
+    expect(result).toEqual({ id: 1, email: dto.email, role: 'user' });
   });
 
   it('logs in a user with valid credentials', async () => {
@@ -74,6 +75,7 @@ describe('AuthService', () => {
     expect(repo.save).toHaveBeenCalled();
     expect(result.tokens.accessToken).toBe('access');
     expect(result.tokens.refreshToken).toBe('refresh');
+    expect(result.user).toEqual({ id: 1, email: dto.email, role: 'user' });
   });
 
   it('refreshes tokens when refresh token valid', async () => {
@@ -94,6 +96,7 @@ describe('AuthService', () => {
 
     expect(result.tokens.accessToken).toBe('newAccess');
     expect(result.tokens.refreshToken).toBe('newRefresh');
+    expect(result.user).toEqual({ id: 1, email: 'test@example.com', role: 'user' });
     expect(repo.save).toHaveBeenCalled();
   });
 });
