@@ -1,9 +1,12 @@
 # Multi-stage build for api-gateway
-FROM node:18-alpine AS build
+FROM node:18-alpine AS deps
 WORKDIR /app
-COPY package*.json ./
+COPY package*.json nx.json tsconfig.base.json tsconfig.json babel.config.json ./
 RUN npm ci --legacy-peer-deps
-COPY . .
+
+FROM deps AS build
+COPY libs ./libs
+COPY packages/api-gateway ./packages/api-gateway
 RUN npx nx build api-gateway --prod
 
 FROM node:18-alpine AS prod
