@@ -155,6 +155,8 @@ The canvas was not properly resizing when the window size changed.
 Fixes #456
 ```
 
+Commit messages are automatically checked by commitlint via a Husky `commit-msg` hook. After running `npm install` the hook is set up and will reject commits that do not follow the Conventional Commits format.
+
 ## Pull Request Process
 
 1. Ensure your code passes all tests and linting
