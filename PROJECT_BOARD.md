@@ -4,10 +4,7 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 
 ## To Do
 
-| Task ID  | Description                                            | Priority | Assigned To |
-| :------- | :----------------------------------------------------- | :------- | :---------- |
-| DOCS-009 | Document all public API endpoints with TSDoc           | Medium   | codex       |
-| CI-003   | Integrate Snyk scanning into CI pipeline               | Medium   | codex       |
+
 
 ## In Progress
 
@@ -51,4 +48,4 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 | **DOCS-008**  | Record codebase testing results and update docs                 | Medium   | codex       | `2025-07-15-DOCS-008-CodebaseTesting.md`          |
 | **F-011**     | Create service-specific Dockerfiles with multi-stage builds     | Medium   | codex       | `2025-07-10-F-011-ServiceDockerfilesCompleted.md` |
 | **F-012**     | Implement global NestJS exception filter                        | Medium   | codex       | `2025-07-10-F-012-ExceptionFilterCompleted.md`    |
-| **SEC-002**   | Remove hardcoded secrets and enforce secret management | High     | codex       | `2025-07-16-SEC-002-ManagedSecrets.md`           |
+

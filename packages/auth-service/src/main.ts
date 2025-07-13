@@ -9,9 +9,6 @@ import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 
 import { AppModule } from './app/app.module';
-import { loadAwsSecrets } from './aws-secrets';
-import { HttpExceptionFilter } from './common/filters/http-exception.filter';
-
 
 async function bootstrap() {
   await loadAwsSecrets();
