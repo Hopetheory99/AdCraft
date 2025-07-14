@@ -73,6 +73,10 @@ npm install -g nx
    docker-compose up
    ```
 
+For production builds, each service has its own Dockerfile referenced in
+`docker-compose.yml`. Ensure `DB_SYNC` is disabled in production environments to
+prevent accidental schema changes.
+
 ## CI/CD Configuration
 
 Nx Cloud requires an access token for remote caching. Store this value as the `NX_CLOUD_ACCESS_TOKEN` environment variable and expose it during your build steps.

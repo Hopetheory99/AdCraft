@@ -2,6 +2,10 @@ import { Injectable, NestMiddleware, UnauthorizedException } from '@nestjs/commo
 import { JwtService } from '@nestjs/jwt';
 import { Request, Response, NextFunction } from 'express';
 
+interface AuthenticatedRequest extends Request {
+  user?: unknown;
+}
+
 @Injectable()
 export class JwtMiddleware implements NestMiddleware {
   constructor(private readonly jwtService: JwtService) {}
@@ -18,7 +22,7 @@ export class JwtMiddleware implements NestMiddleware {
       const payload = await this.jwtService.verifyAsync(token, {
         secret: process.env.JWT_SECRET,
       });
-      (req as any).user = payload;
+      (req as AuthenticatedRequest).user = payload;
       next();
     } catch (err) {
       throw new UnauthorizedException('Invalid token');

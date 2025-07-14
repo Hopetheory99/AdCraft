@@ -54,3 +54,4 @@ This board tracks all development tasks for the AdCraft v2 project. All work mus
 | **DOCS-009** | Document all public API endpoints with TSDoc | Low | codex | `2025-07-11-DOCS-009-ApiDocsCompleted.md` |
 | **CI-003**   | Integrate Snyk scanning into CI pipeline | Medium | codex | `2025-07-11-CI-003-SnykIntegrationCompleted.md` |
 | **DOCS-010**  | Sync project board with PERFECTION_PLAN tasks | Low | codex | `2025-07-13-DOCS-010-BoardSync.md` |
+| **MAINT-002** | Prepare codebase for production (tidy imports, remove any) | High | codex | `2025-07-13-MAINT-002-CodebaseTidying.md` |

@@ -2,11 +2,13 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import express from 'express';
 import request from 'supertest';
+import { Server } from 'http';
+import { AddressInfo } from 'net';
 
 import { AppModule } from '../../../api-gateway/src/app/app.module';
 
 let app: INestApplication;
-let server: any;
+let server: Server;
 
 beforeAll(async () => {
   const stub = express();
@@ -14,7 +16,7 @@ beforeAll(async () => {
   await new Promise<void>(resolve => {
     server = stub.listen(0, resolve);
   });
-  const port = (server.address() as any).port;
+  const port = (server.address() as AddressInfo).port;
   process.env.SERVICE_ROUTES = `stub=http://localhost:${port}`;
 
   const moduleRef = await Test.createTestingModule({

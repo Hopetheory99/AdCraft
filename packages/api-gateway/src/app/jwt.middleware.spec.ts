@@ -1,5 +1,6 @@
 import { UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { Request, Response } from 'express';
 
 import { JwtMiddleware } from './jwt.middleware';
 
@@ -18,21 +19,21 @@ describe('JwtMiddleware', () => {
   });
 
   it('throws when token missing', async () => {
-    const req: any = { headers: {} };
-    await expect(middleware.use(req, {} as any, jest.fn())).rejects.toThrow(UnauthorizedException);
+    const req = { headers: {} } as unknown as Request;
+    await expect(middleware.use(req, {} as unknown as Response, jest.fn())).rejects.toThrow(UnauthorizedException);
   });
 
   it('throws when token invalid', async () => {
     jwt.verifyAsync.mockRejectedValue(new Error('bad'));
-    const req: any = { headers: { authorization: 'Bearer bad' } };
-    await expect(middleware.use(req, {} as any, jest.fn())).rejects.toThrow(UnauthorizedException);
+    const req = { headers: { authorization: 'Bearer bad' } } as unknown as Request;
+    await expect(middleware.use(req, {} as unknown as Response, jest.fn())).rejects.toThrow(UnauthorizedException);
   });
 
   it('attaches user and calls next on success', async () => {
     jwt.verifyAsync.mockResolvedValue({ sub: 1 });
-    const req: any = { headers: { authorization: 'Bearer good' } };
+    const req = { headers: { authorization: 'Bearer good' } } as unknown as Request & { user?: unknown };
     const next = jest.fn();
-    await middleware.use(req, {} as any, next);
+    await middleware.use(req, {} as unknown as Response, next);
     expect(jwt.verifyAsync).toHaveBeenCalledWith('good', { secret: 'secret' });
     expect(req.user).toEqual({ sub: 1 });
     expect(next).toHaveBeenCalled();
